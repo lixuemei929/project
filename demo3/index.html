@@ -1,0 +1,41 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>循环使盒子变色</title>
+    <style>
+        #box{
+            width: 330px;
+            margin: 10px auto;
+        }
+        #box div{
+            width: 100px;
+            height: 100px;
+            background: #ccc;
+            float:left;
+            margin: 0 5px;
+        }
+    </style>
+</head>
+<body>
+    <center><button id="btn">点击将DIV变色</button></center>
+    <div id="box">
+        <div></div>
+        <div></div>
+        <div></div>
+    </div>
+    <script>
+        var btn=document.getElementById('btn');
+            divs=document.getElementById('box').getElementsByTagName('div');
+
+            btn.onclick=function(){
+                for(var i=0;i<divs.length;i++){
+                    divs[i].style.background='gold';
+                }
+            }
+    </script>
+</body>
+</html>

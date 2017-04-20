@@ -1,0 +1,58 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>控制div属性</title>
+    <style>
+        #box{
+            width: 500px;
+            margin: 0 auto;
+            text-align: center;
+            padding: 0;
+        }
+        #box2{
+            width: 100px;
+            height: 100px;
+            background: #000;
+            margin: 20px auto;
+        }
+    </style>
+</head>
+<body>
+    <div id="box">
+        <input type="button" value="变宽">
+        <input type="button" value="变高">
+        <input type="button" value="变色">
+        <input type="button" value="隐藏">
+        <input type="button" value="重置">
+        <div id="box2"></div>
+    </div>
+    <script>
+        //获取元素
+        var btns=document.getElementsByTagName('input'),
+            box2=document.getElementById('box2');
+        //把要设置的属性写成一个数组
+        var Att = ["width","height","background","display","display"];
+        //属性值也写在一个数组里
+        var Val = ["200px","200px","blue","none","block"];
+        //遍历按钮
+        for(var i=0;i<btns.length;i++){
+            //吧点击每个按钮的下标赋给i；（由于隔着函数，只能读取最终值）
+            btns[i].index=i;
+            btns[i].onclick=function () {
+             //重置按钮操作
+            this.index == btns.length - 1 && (box2.style.cssText = "");
+                //调用函数
+                changeStyle(box2,Att[this.index],Val[this.index]);
+            }
+        }
+
+        //封装改变属性的一个方法
+      function changeStyle(ele,attr,value){
+          ele.style[attr]=value;
+      }
+    </script>
+</body>
+</html>
