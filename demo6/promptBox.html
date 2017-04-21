@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>记住密码提示功能</title>
+    <style>
+        #box{
+            width: 200px;
+            margin: 20px auto;
+        }
+        #tip{
+            padding: 5px;
+            margin-top: 10px;
+            font-size: 12px;
+            border: 1px solid red;
+            background: lightsalmon;
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <div id="box">
+        <label for=""><input type="checkbox">两周内自动登陆</label>
+        <div id="tip">为了您的信息安全，不要在网吧和公用电脑上使用此功能</div>
+    </div>
+    <script>
+        var label=document.getElementsByTagName('label')[0],
+            tip=document.getElementById('tip');
+
+        label.onmouseover=function(){
+            tip.style.display='block';
+        }
+        label.onmouseout=function(){
+            tip.style.display='none';
+        }
+    </script>
+</body>
+</html>
