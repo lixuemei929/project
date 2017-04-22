@@ -1,0 +1,62 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>鼠标移入移出改变透明度</title>
+    <link rel="stylesheet" href="css/reset.css">
+    <style>
+        #list{
+            width: 418px;
+            border: 2px solid #333;
+            padding: 10px 0 6px 10px;
+            margin: 20px auto;
+            overflow: hidden;
+        }
+        #list li{
+            float: left;
+            width: 128px;
+            height: 128px;
+            border: 1px solid #ccc;
+            padding: 5px;
+            margin-bottom: 5px;
+            margin-right: 5px;
+        }
+        #list li img{
+            width: 100%;
+            height: 100%;
+        }
+        #list li img{
+            float:left;
+            opacity:0.3;
+            cursor:crosshair;
+
+        }
+        #list li.on img{
+            opacity: 1;
+        }
+
+    </style>
+</head>
+<body>
+    <ul id="list">
+        <li><img src="img/1.jpg" alt=""></li>
+        <li><img src="img/2.jpg" alt=""></li>
+        <li><img src="img/3.jpg" alt=""></li>
+        <li><img src="img/4.jpg" alt=""></li>
+        <li><img src="img/5.jpg" alt=""></li>
+        <li><img src="img/6.jpg" alt=""></li>
+    </ul>
+    <script>
+        var lis=document.getElementById('list').getElementsByTagName('li');
+
+        for(var i=0;i<lis.length;i++){
+            lis[i].onmouseover=function(){
+                this.className='on';
+            };
+            lis[i].onmouseout=function(){
+                this.className='';
+            }
+        }
+    </script>
+</body>
+</html>

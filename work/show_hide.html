@@ -1,0 +1,86 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>显示隐藏</title>
+    <link rel="stylesheet" href="css/reset.css">
+    <style>
+        #box{
+            width: 200px;
+            background: #aaa;
+            border: 1px solid #999;
+            margin: 20px auto;
+
+        }
+        h2{
+            height: 35px;
+            line-height: 35px;
+            background: #ced3d7;
+            padding-left: 10px;
+            position: relative;
+
+        }
+        h2:after{
+            content:"";
+            width: 0;
+            height: 0;
+            border: 5px solid transparent;
+            border-bottom-color: #333;
+            position: absolute;
+            right: 15px;
+            top: 10px;
+        }
+        h2.on:after{
+            content:"";
+            width: 0;
+            height: 0;
+            border: 5px solid transparent;
+            border-top-color: #333;
+            position: absolute;
+            right: 15px;
+            top: 15px;
+        }
+        ul{
+            background: #eee;
+            border-top: 1px solid #fff;
+            display: none;
+        }
+        ul li{
+            font-size: 12px;
+            height: 30px;
+            line-height: 30px;
+            cursor:pointer;
+            color:#57646E;
+            padding-left: 10px;
+        }
+        ul li:hover{
+            background:#fff;
+        }
+
+    </style>
+</head>
+<body>
+    <div id="box">
+        <h2 id="list">播放列表</h2>
+        <ul id="info">
+            <li>玩家之徒--蔡依林</li>
+            <li>原谅我就是这样的女主--戴佩妮</li>
+            <li>猜不透--叮当</li>
+            <li>自导自演--周杰龙</li>
+            <li>浪漫窝--弦子</li>
+            <li>流年--王菲</li>
+        </ul>
+    </div>
+    <script>
+        var list=document.getElementById('list'),
+            info=document.getElementById('info'),
+            lis=info.getElementsByTagName('li');
+
+            list.onclick=function(){
+                list.className=list.className==''?'on':'';
+                info.style.display=info.style.display=='none'?'block':'none';
+            }
+
+    </script>
+</body>
+</html>
