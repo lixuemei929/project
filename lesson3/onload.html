@@ -1,0 +1,31 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>页面加载后自加1</title>
+    <link rel="stylesheet" href="css/reset.css">
+    <style>
+        body{
+            font-weight: bold;
+            color: red;
+            font-size: 16px;
+            text-align: center;
+            margin: 20px auto;
+        }
+    </style>
+
+</head>
+<body>
+    <script>
+        var body=document.body;
+        var i=0;
+        setInterval(updateNum, 1000);
+        updateNum();
+        function updateNum()
+        {
+            body.innerHTML = ++i;
+        }
+
+    </script>
+</body>
+</html>

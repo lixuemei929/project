@@ -1,0 +1,58 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>输入两个数字，比较大小</title>
+    <link rel="stylesheet" href="css/reset.css">
+    <style>
+        #box{
+            width: 300px;
+            margin: 20px auto;
+        }
+        input{
+            width: 60px;
+            border: 1px solid #ccc;
+            background: #f0f0f0;
+            padding: 5px;
+        }
+        span{
+            color: red;
+            font-weight: bold;
+        }
+        strong{
+            padding: 0 10px;
+        }
+
+        #btn{
+            margin: 0 10px;
+            font-size: 12px;
+            width: 80px;
+        }
+    </style>
+</head>
+<body>
+    <div id="box">
+        <input type="text"><strong>vs</strong><input type="text"><input type="button" value="最大数是 》" id="btn"/><span id="num">?</span>
+    </div>
+    <script>
+        var input=document.getElementsByTagName('input'),
+            btn=document.getElementById('btn'),
+            num=document.getElementById('num');
+
+        for(var i=0;i<input.length;i++){
+            input[i].onkeyup=function(){
+                this.value=this.value.replace(/[^\d]/,"");
+            }
+        }
+
+
+        btn.onclick=function(){
+            if(input[0].value==""|| input[1].value==""){
+                alert('请输入数字');
+            }else{
+                num.innerHTML=Math.max(input[0].value,input[1].value);
+            }
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,28 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>累加按钮，自加1</title>
+    <link rel="stylesheet" href="css/reset.css">
+    <style>
+        #btn{
+            width: 40px;
+            display: inline-block;
+            margin: 20px auto;
+        }
+
+    </style>
+</head>
+<body>
+    <center><input type="button" id="btn" value="0"></center>
+    <script>
+        var btn=document.getElementById('btn');
+        var i=0;
+        btn.onclick=function(){
+            btn.value = ++i;
+            //alert(i)
+        }
+
+    </script>
+</body>
+</html>
