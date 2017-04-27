@@ -1,0 +1,90 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>css函数--设置/读取对象的属性</title>
+    <link rel="stylesheet" href="css/reset.css">
+    <style>
+        #box{
+            width: 400px;
+            margin: 20px auto;
+            background: lightpink;
+            border: 1px solid red;
+            height: 200px;
+        }
+
+        input{
+            width: 100px;
+            display: inline-block;
+            border:0;
+            background: coral;
+            font-size: 12px;
+            font-weight: bold;
+            height: 25px;
+            color: #fff;
+            margin: 10px 0 0 5px;
+
+        }
+    </style>
+</head>
+<body>
+    <div id="box">
+        <input type="button" value="Get Style">
+        <input type="button" value="Set Style">
+        <input type="button" value="Default Style">
+    </div>
+    <script>
+        var box=document.getElementById('box'),
+            inputs=box.getElementsByTagName('input');
+        //第一个按钮点击事件
+        inputs[0].onclick = function () {
+            //两个参数, 第二个参数为字符串, 读取属性值
+            alert("width: " + css(box, "width") + "\nheight: " + css(box, "height") + "\nbackground-color: " + css(box, "backgroundColor"))
+        };
+        //第二个按钮点击事
+        inputs[1].onclick = function ()
+        {
+            //两个参数, 第二个参数为对象, 属性批量设置
+            css(box, {width: "330px", height: "100px", borderColor: "#0084ff", backgroundColor: "#eff8ff"});
+            //三个参数, 属性单一设置
+            for (i = 0; i < inputs.length; i++) css(inputs[i], "backgroundColor", "#0084ff")
+        }
+        //第三个按钮点击事件
+        inputs[2].onclick = function () {
+            //两个参数, 第二个参数为对象, 属性批量设置
+            css(box, {width: "400px", height: "200px", borderColor: "#f60", backgroundColor: "#fef4eb"});
+            //三个参数, 属性单一设置
+            for (i = 0; i < inputs.length; i++) css(inputs[i], "backgroundColor", "#f60")
+        }
+
+
+
+
+
+
+        function css(obj, attr, value)
+        {
+            switch (arguments.length)
+            {
+                case 2:
+                    if(typeof arguments[1] == "object")
+                    {	//二个参数, 如果第二个参数是对象, 批量设置属性
+                        for (var i in attr)obj.style[i] = attr[i]
+                    }
+                    else
+                    {	//二个参数, 如果第二个参数是字符串, 读取属性值
+                        return obj.currentStyle ? obj.currentStyle[attr] : getComputedStyle(obj, null)[attr]
+                    }
+                    break;
+                case 3:
+                    //三个参数, 单一设置属性
+                    obj.style[attr] = value;
+                    break;
+                default:
+                    alert("参数错误！")
+            }
+        }
+
+    </script>
+</body>
+</html>
