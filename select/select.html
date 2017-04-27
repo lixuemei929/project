@@ -1,0 +1,128 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>模拟select控件</title>
+    <link rel="stylesheet" href="css/reset.css">
+    <style>
+        body{
+            background:#23384e;
+        }
+        #search {
+            width: 380px;
+            margin: 10px auto;
+            height: 34px;
+            background: -webkit-linear-gradient(top, #eee, #666);
+            border-radius: 5px;
+            padding-left: 30px;
+
+        }
+        #search a{
+            float:left;
+            width:80px;
+            height:24px;
+            color:#333;
+            letter-spacing:4px;
+            line-height:22px;
+            text-align:center;
+            border: 1px solid #ccc;
+            margin-top: 4px;
+            font-size: 12px;
+            margin-left: 30px;
+            border-radius: 5px;
+            background: #fff;
+            box-shadow: 0 0 2px #333;
+
+        }
+
+        #search a:hover{
+            color: red;
+        }
+        #search span{
+            float:left;
+            width: 200px;
+            height: 25px;
+            border: 1px solid #fff;
+            border-radius: 5px;
+            line-height: 23px;
+            padding-left: 10px;
+            font-size: 12px;
+            color: #fff;
+            margin-top: 4px;
+            position: relative;
+            background: #666;
+        }
+        #search span:after{
+            content:"";
+            border: 8px solid transparent;
+            border-top-color: #eee;
+            position: absolute;
+            right: 8px;
+            top: 8px;
+
+        }
+        #sub{
+            clear:both;
+            width: 200px;
+            background: #333;
+            border: 1px solid #fff;
+            display: none;
+        }
+        #sub li{
+            font-size: 12px;
+            color: #fff;
+            height: 25px;
+            line-height: 25px;
+            border-bottom: 1px dotted #fff;
+            padding-left: 10px;
+        }
+        #sub li:hover{
+            background: #999;
+        }
+    </style>
+</head>
+<body>
+
+    <div id="search">
+        <div class="box">
+            <form>
+                <span id="select">请选择游戏名称</span>
+                <a href="javascript:;" id="sear">搜索</a>
+            </form>
+        </div>
+        <ul id="sub">
+            <li>地下城与勇士</li>
+            <li>魔兽世界（国服）</li>
+            <li>魔兽世界（台服）</li>
+            <li>热血江湖</li>
+            <li>神鬼传奇</li>
+            <li>大话西游II</li>
+            <li>QQ幻想世界</li>
+        </ul>
+    </div>
+    <script>
+        var select=document.getElementById('select'),
+            sear=document.getElementById('sear'),
+            sub=document.getElementById('sub'),
+            lis=sub.getElementsByTagName('li');
+
+        select.onclick=function(event){
+            sub.style.display=sub.style.display=='block'?'none':'block';
+           //阻止事件冒泡
+           (event || window.event).cancelBubble = true;
+
+        }
+
+        for(var i=0;i<lis.length;i++){
+            lis[i].onclick=function(){
+                select.innerHTML=this.innerHTML;
+            }
+
+        }
+
+        document.onclick=function(event){
+            sub.style.display='none';
+        }
+    </script>
+</body>
+</html>
