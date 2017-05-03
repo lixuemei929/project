@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+		#div{
+			width: 100px;
+			height: 100px;
+			background: #ff0;
+			text-align: center;
+		}
+		span{
+			background: #f00;
+		}
+		p{
+			width: 100px;
+			height: 30px;
+			background: blue;
+		}
+	</style>
+</head>
+<body>
+	<div id='div'>
+		DIV
+		<span>
+			SPAN
+		</span>
+	</div>
+	<span>SPAN</span>
+	<p>P</p>
+	<script>
+		document.onclick=function(evt){
+			var e=window.event || evt;
+			var tag=e['target'] || e['srcElement'];
+			alert(tag.tagName);
+		}
+
+		function getCom(str){
+			var subStr=str.split('-');
+			var str=subStr[0];
+
+			for(var i=0;i<subStr.length;i++){
+				str+=subStr[i].substr(0,1).toUpperCase()+subStr[i].substr(1);
+			}
+			return str;
+		}
+
+		console.log(getCom('border-left-color'));
+	</script>
+</body>
+</html>
