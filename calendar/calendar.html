@@ -1,0 +1,36 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>日历</title>
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <link rel="stylesheet" href="css/reset.css">
+    <link rel="stylesheet" href="css/mobiscroll.min.css">
+    <style>
+
+    </style>
+</head>
+<body>
+    <input type="text" id="demo" placeholder="请选择...">
+    <script src="js/jquery.js"></script>
+    <script src="js/mobiscroll.min-compiled.js"></script>
+    <script>
+        $(function(){
+            $("#demo").mobiscroll().calendar({
+                theme:'ios',  //主题，ios代表苹果  android安卓
+                display:'bottom',//代表在哪个位置 有top center 还有inline inline是代表直接显示
+                counter:true,
+                lang:'zh',
+                controls:['calendar','time'],
+                buttons:['set','clear','cancel','now'],//按钮  可以是设置 清除 取消  现在的时间
+                /*closeOnSelect:true,*///选完日期后关闭日历
+                invalid: ['w0', 'w6', '5/1', '12/24', '12/25'] ,//它必须是一个数组 w0 w6 一周的天数 ! 5/1 5月1
+                mode:'mixed'//选择模式 是滚动模式 还是 clickpick 点击+ - 模式 滚轮可以滚动，“+”和“-”按钮是可见的
+
+
+            })
+        })
+    </script>
+
+</body>
+</html>
