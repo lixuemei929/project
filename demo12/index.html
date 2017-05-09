@@ -1,0 +1,60 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>原生实现ajax</title>
+</head>
+<body>
+    <script>
+        //ajax实现原理，通过xmlhttprequest对象向服务器发送异步请求，从服务器获得数据，然后用js操作dom元素更新元素
+        function ajax(opt){
+           var xhr=null;
+           //创建ajax对象
+            //标准浏览器
+           if(window.XMLHttpRequest){
+               xhr=new XMLHttpRequest();
+           }else{
+               //IE浏览器
+               xhr=new ActiveXObject('Microsoft.XHMHTTP');
+           }
+           //传输方式
+            xhr.open(opt.type,opt.url,true);
+           if(type=='GET' || type=='get'){//发送
+               xhr.send(null);
+           }else if(type=='POST' || type=='post'){
+               xhr.setRequestHeader('content-type','application/x-www-form-urlencoded');
+              xhr.send(data);
+           }
+           xhr.onreadystatechange=function(){
+               if(xhr.readyState==4 && xhr.status==200){
+                   if(dataType=='text' || dataType=='TEXT'){
+                       if(success!=null){
+                           success(xhr.responseText);//普通文本
+                       }
+                   }else if(dataType=='xml' | dataType=='XML'){
+                       if(success!=null){
+                           success(xhr.responseXML)//接收文档
+                       }
+                   }else if(dataType=='json'||dataType=='JSON'){
+                        if(scccess!=null){
+                            //将json字符串转换为js对象
+                            success(eval("("+xhr.responseText+")"))
+                        }
+                   }
+               }
+           }
+
+        }
+
+        ajax({
+            type:'post',
+            url:'test.jsop',
+            data:'name=as&age=20',
+            dataType:'json',
+             success:function(data){
+                alert(data.name);
+            }
+        })
+    </script>
+</body>
+</html>
