@@ -1,0 +1,45 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>面向对象</title>
+</head>
+<body>
+    <script>
+        //定义形状类
+        function Shape(color){
+            this.color=color;
+        }
+        Shape.prototype.getColor=function(){
+            return this.color;
+        };
+        Shape.prototype.setColor=function(){
+            this.color=newColor;
+        };
+
+        //定义矩形子类
+        function Rectangle(color){
+            Shape.call(this,color)
+        }
+        //实现继承
+        //子类的原型指向父类的实例
+        Rectangle.prototype=new Shape();
+        Rectangle.prototype.getArea=function(width,height){
+            return width*height;
+        }
+        //定义圆形子类
+        function Circle(color){
+            Shape.call(this,color);
+        }
+        //实现继承
+        //pow() 方法可返回 x 的 y 次幂的值
+        Circle.property=new Shape();
+        Circle.property.getArea=function(radius){
+            return Math.PI*pow(radius,2);
+        }
+        var r1=new Rectangle('blue');
+            alert(r1.getColor());
+            alert(r1.getArea(30,40));
+    </script>
+</body>
+</html>
