@@ -1,0 +1,33 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>hasClass addClass removeClass功能</title>
+</head>
+<body>
+    <script>
+        //1.hasClss判断样式是否存在
+        function hasClass(ele,clas){
+            var reg=new RegExp('\\b'+clas+'\\b','g');
+            if(reg.test(ele.className)){
+                return true;
+            }else{
+                return false;
+            }
+        }
+        //2.addClass添加样式
+        function addClass(ele,clas){
+            if(!hasClass(ele,clas)){
+                ele.className=ele.classNmae+" "+clas;
+            }
+        }
+        //3.remvoveClass删除样式
+        function removeClass(ele,clas){
+            if(hasClass(ele,clas)){
+                var reg=new RegExp('\\b'+cls+'\\b');
+                    ele.className=ele.className.replace(reg,"");
+            }
+        }
+    </script>
+</body>
+</html>
