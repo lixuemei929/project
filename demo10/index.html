@@ -1,0 +1,44 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>用三种方法实现打印li的索引</title>
+</head>
+<body>
+<ul>
+    <li>1111</li>
+    <li>2222</li>
+    <li>3333</li>
+</ul>
+    <script>
+        //方法一：
+        var lis=document.getElementsByTagName('li');
+            /*for(var i=0;i<lis.length;i++){
+                lis[i].index=i;
+                lis[i].onclick=function(){
+                    alert(this.index);
+                }
+            }*/
+        //方法二：
+        /*for(var i=0;i<lis.length;i++){
+            (function msg(n){
+                lis[n].onclick=function(){
+
+                    alert(n)
+                }
+            })(i)
+        }
+        msg=null;*/
+        //方法三：
+        for(var i=0;i<lis.length;i++){
+            lis[i].setAttribute('data-num',i);
+        }
+        for(var i=0;i<lis.length;i++){
+            lis[i].onclick=function(){
+                alert(this.getAttribute('data-num'))
+            }
+        }
+
+    </script>
+</body>
+</html>
