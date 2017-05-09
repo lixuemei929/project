@@ -1,0 +1,39 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>绑定事件（兼容）</title>
+</head>
+<body>
+    <script>
+        function addHander(ele,type,fn){
+            if(ele.addEventListener) {
+                ele.addEventListener(type,fn,false);
+            }else if(ele.attachEvent){
+                ele.attachEvent("on"+type,fn);
+            }else{
+                ele["on"+type]=fn;
+            }
+        }
+
+        //ie和火狐事件对象的不同点
+        var getEvent=function(event){
+            return event?event:window.event;
+        }
+
+        function myObject(){
+            var x=20;
+            var privateFoo=function(){
+                return 30
+            }
+            this.y=30;
+            this.publicFoo=function(){
+                return x;
+            }
+        }
+
+        var f=new myObject();
+        alert(f.publicFoo());
+    </script>
+</body>
+</html>
